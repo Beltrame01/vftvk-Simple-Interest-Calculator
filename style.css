@@ -68,6 +68,7 @@ input {
     width: 50px;
     font-size: 15px;
     margin: 10 0 10 0;
+    color: black;
 }
 
 #int_rate {

@@ -2,6 +2,7 @@
     <head>
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
+    <title>Web App - Simple Interest Calculator</title>
     </head>
     <body onload="load_page()">
         
@@ -17,17 +18,19 @@
                         
                         <label for="int_rate">Interest Rate</label>
                         <input type="range"  id="int_rate" min="1" max="20" step="0.1" onchange="fetch()">
-                        <input type="text" name="int_rate_out" id="int_rate_out">
+                        <input type="text" name="int_rate_out" id="int_rate_out" disabled>
 
                         <br>
                         
-                        <label for="num_years">No. of Years</label>
-                        <input type="number"  id="num_years" min="1" max="60" onchange="check_years()">
+                        <div id="dropdown_box">
+                            <label for="num_years">No. of Years</label>
+                        </div>
+                        
 
                         
                     </form>
 
-                    <input type="submit" value="Comput Interest" id="sub_button" onclick="calculate_profit()">
+                    <input type="submit" value="Compute Interest" id="sub_button" onclick="calculate_profit()">
 
                     <div id="show_profit">
                         <div></div>

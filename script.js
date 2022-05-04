@@ -1,8 +1,30 @@
 //Function to charge all the page needs
 function load_page()
 {
+    //Loading the Interest Rate value showed
     fetch();
-    check_years();
+    
+    //--Creating the dropdown box automatically for the No. of Years--
+    const dropdown = document.querySelector("#dropdown_box");
+    const dropdown_list = document.createElement("select");
+    
+    dropdown_list.setAttribute("id","num_years");
+    dropdown_list.setAttribute("name","num_years");
+
+    dropdown.append(dropdown_list);
+
+    const select_list = document.querySelector("#num_years");
+
+    for (let i=1; i<=40;i++)
+    {
+        var list_item = document.createElement("option");
+        list_item.setAttribute("value",i);
+        list_item.innerHTML = i;
+
+        select_list.append(list_item);
+    }
+    //----------------------------------------------------------------
+    
 }
 
 //Function to show the Interest rate selected
@@ -32,10 +54,20 @@ function check_years()
 
 //Function to calculate profit and print on the screen
 function calculate_profit()
-{
+{   
     var amount = document.getElementById("amount").value; //Invested amount
     var int_rate = document.getElementById("int_rate").value; //Interest Rate
     var num_years = document.getElementById("num_years").value; //No. of Years
+
+    //Alert if the principal gets a negative, zero or blank value
+    if (amount<=0 || amount=="")
+    {
+        alert("Enter a positive number for the amount!");
+        document.getElementById("amount").value = "";
+        document.getElementById("amount").focus();
+        return
+    }
+
 
     var int_rate_value = int_rate + "%"; //The Interest rate is changed to show as percentage
 
@@ -61,19 +93,19 @@ function calculate_profit()
   
     //Create the first paragraph
     const parag1 = document.createElement("p");
-    parag1.innerHTML = "If you deposit " + amount + ",";
+    parag1.innerHTML = "If you deposit <mark>" + amount + "</mark>,";
 
     //Create the second paragraph
     const parag2 = document.createElement("p");
-    parag2.innerHTML = "at an insterest rate of " + int_rate_value + ".";
+    parag2.innerHTML = "at an insterest rate of <mark>" + int_rate_value + "</mark>.";
 
     //Create the third paragraph
     const parag3 = document.createElement("p");
-    parag3.innerHTML = "You will receive an amount of " + profit + ",";
+    parag3.innerHTML = "You will receive an amount of <mark>" + profit + "</mark>,";
 
     //Create the fourth paragraph
     const parag4 = document.createElement("p");
-    parag4.innerHTML = "in the year " + final_year;
+    parag4.innerHTML = "in the year <mark>" + final_year + "</mark>";
 
     //print on the screen all the paragraphs
     div_select.append(parag1);
